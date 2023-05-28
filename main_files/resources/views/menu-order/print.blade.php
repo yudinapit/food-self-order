@@ -2,12 +2,15 @@
     <head>
         <style>
             #app .app{
-                max-width: 400px;
                 width: 100%;
                 border: 1px solid;
-                min-height: 100vh;
                 height: 100%;
-                padding: 20px;
+                padding: 20px 20px 80px 20px;
+            }
+            @media (min-width : 768px) {
+                #app .app{
+                    max-width: 400px;
+                }
             }
             .table {
                 border-collapse: collapse;
