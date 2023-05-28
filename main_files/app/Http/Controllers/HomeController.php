@@ -45,7 +45,7 @@ class HomeController extends Controller
         $starters = Menu::orderBy('price')->limit(4)->get();
         $menus = Menu::orderBy('id', 'DESC')->get();
 
-        return view('frontend.menu', compact('menus', 'starters'));
+        return view('frontend.menu.index', compact('menus', 'starters'));
     }
 
     public function reserve(Request $request)

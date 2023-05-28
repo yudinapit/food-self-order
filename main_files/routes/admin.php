@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderMenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['role:admin']], function () {
+// Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/', [\App\Http\Controllers\Backend\HomeController::class, 'index'])->name('admin.home');
     // Category routes
     Route::resource('/category', \App\Http\Controllers\CategoryController::class, ['names' => 'category']);
+    Route::resource('/tables', \App\Http\Controllers\TablesController::class, ['names' => 'tables']);
+    Route::resource('/order-menu', \App\Http\Controllers\OrderMenuController::class, ['names' => 'order-menu']);
+    Route::get('/order-menu/print/{id}', [OrderMenuController::class, 'print'])->name('order-menu.print');
     // Menu routes
     Route::resource('/menu', \App\Http\Controllers\MenuController::class, ['names' => 'menu']);
     // Service routes
@@ -40,5 +44,5 @@ Route::group(['middleware' => ['role:admin']], function () {
     //General routes
     Route::get('/general', [App\Http\Controllers\GeneralController::class, 'index'])->name('admin.general');
     Route::put('/general/{type}', [App\Http\Controllers\GeneralController::class, 'store'])->name('admin.general.store');
-});
+// });
 
